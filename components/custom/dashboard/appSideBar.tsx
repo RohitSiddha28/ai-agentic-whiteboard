@@ -58,7 +58,7 @@ export function AppSidebar() {
           <SidebarGroupLabel>Others</SidebarGroupLabel>
           <SidebarMenuButton className="p-5" isActive={pathname === "/ai"}>
             <Sparkles />
-            <span>AI helper</span>
+            <span>AI Helper</span>
           </SidebarMenuButton>
           <SidebarMenuButton
             className="p-5"
@@ -79,9 +79,27 @@ export function AppSidebar() {
           <Progress value={66} className="h-2 mt-2"></Progress>
         </div>
         <div className="flex items-center gap-2 p-2 border rounded-md">
-          <Image src={user?.imageUrl ?? ''} alt="User Image" width={40} height={40} 
-          className="rounded-full"/>
-          <h2>{user?.firstName} {user?.lastName}</h2>
+          {/* <Image 
+            src={user?.imageUrl??""} 
+            alt="User Image" 
+            width={40} 
+            height={40} 
+            className="rounded-full"
+          /> */}
+          {user?.imageUrl ? (
+            <Image
+              src={user.imageUrl}
+              alt="User Image"
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
+          ) : (
+            <div className="h-10 w-10 rounded-full bg-muted animate-pulse" />
+          )}
+          <h2>
+            {user?.firstName} {user?.lastName}
+          </h2>
         </div>
       </SidebarFooter>
     </Sidebar>
